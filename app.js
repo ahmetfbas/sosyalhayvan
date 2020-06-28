@@ -23,11 +23,7 @@ mongoose.connect("mongodb+srv://ahmetfbas:bvkbs2AB.@sosyalhayvan-x9d4g.mongodb.n
 	useNewUrlParser: true, 
 	useUnifiedTopology: true, 
 	useFindAndModify: false,
-	useCreateIndex: true}).then(() => {
-	console.log("connected to db");
-}).catch(err =>{
-	console.log("err", err.message);
-});
+	useCreateIndex: true})
 
 
 
