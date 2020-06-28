@@ -214,7 +214,7 @@ textarea.form-control {
 /*Login Page*/
 .page-header {
     min-height: 100vh;
-    max-height: 1082px;
+    max-height: 1160px;
     padding: 0;
     color: #FFFFFF;
     position: relative;
@@ -529,4 +529,12 @@ a.read-btn:hover {
 .author span a {
     color: #766cb6;
     font-weight: 700;
+}
+.navbar-collapse.collapse.show {
+    background-color: rgb(118,108,182,0.8);
+    padding: 10px;
+}
+.navbar-collapse.collapse.show li {
+    margin-top: 5px;
+    border-bottom: 1px solid #766CB6;
 }
