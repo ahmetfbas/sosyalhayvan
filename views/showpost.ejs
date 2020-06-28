@@ -1,0 +1,111 @@
+<%- include("partials/header") %>
+<div class="page-header page-header-small">
+    <div class="page-header-image" data-parallax="true"
+        style="background-image: url(<%= foundPost.image %>);background-color: #766cb6;">
+		
+    </div>
+
+    <div class="content-center">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title"><%= foundPost.title %> </h2>
+                <h4><%= foundPost.creationdate.toDateString() %></h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <h3 class="title"><%- foundPost.subtitle %></h3>
+                    <p class="post-body">
+                        <%- foundPost.content %>
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-blog-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <hr>
+
+                    <div class="card card-profile card-plain">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="card-avatar">
+                                    <a href="#">
+                                        <img class="img img-raised" src="<%= foundPost.author.avatar %>">
+                                    </a>
+                                    <div class="ripple-container"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h4 class="card-title"><a href="/users/<%= foundPost.author.id %>"><%= foundPost.author.username %></a></h4>
+                                
+                                <p class="description"><%- foundPost.author.description.substring(0,50) %>...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="media media-post">
+                        <div class="media-body">
+                            <div class="media-footer">
+                                <a href="/posts/<%=foundPost.id%>/comments/new" class="btn btn-primary pull-right">
+                                    Yorumda bulun
+                                </a>
+                                <% if(currentUser && foundPost.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){%>
+                                    <a class="btn btn-primary pull-right" href="/posts/<%=foundPost.id%>/edit">Düzenle</a>
+                                    <form action="/posts/<%=foundPost.id%>?_method=DELETE" method="POST" style="display: inline-block;">
+                                        <button class="btn btn-primary pull-right">Sil</button>
+                                    </form>
+                                <%} %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section section-comments">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 ml-auto mr-auto">
+                                    <div class="media-area">
+                                        <h3 class="title text-center"><%= foundPost.comments.length%> yorum</h3>
+											
+                                        <% foundPost.comments.forEach(function (comment) {%>
+										
+                                        <div class="media">
+                                            <a class="pull-left" href="#pablo">
+                                                <div class="avatar">
+                                                    <img class="media-object img-raised"
+                                                        src="<%= comment.author.avatar %>" alt="...">
+                                                </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading"><%= comment.author.username %> 
+													<span class="post-date"> <%= moment(comment.creationdate).fromNow() %></span></h5>
+                                                <%= comment.text %>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<%- include("partials/footer") %>

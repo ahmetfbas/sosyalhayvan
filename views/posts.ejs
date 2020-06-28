@@ -1,0 +1,54 @@
+<%- include("partials/header") %>
+
+<div class="banner">
+    <div class="header">
+        <p>Sosyal Hayvan</p>
+    </div>
+
+</div>
+<div class="content">
+    <div class="container home-body">
+        <div class="row">
+            <% allposts.forEach(function(post){%>
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-plain card-blog">
+                    <div class="card-image">
+                        <a href="/posts/<%= post.id %>">
+                            <img class="img rounded img-raised"
+                                src="<%= post.image %>">
+                        </a>
+                    </div>
+
+                    <div class="card-body">
+                        <span class="post-date"><%= moment(post.creationdate).fromNow() %></span>
+                        <h4 class="card-title">
+                            <a href="/posts/<%= post.id %>"><%= post.title %></a>
+                        </h4>
+                        <div class="card-description">
+                            <p>
+								<%- post.content.substring(0,100)%>...
+							</p>
+                            <a href="/posts/<%= post.id %>" class="read-btn"> Oku </a>
+                        </div>
+                        <div class="author">
+							
+                            <img src="<%= post.author.avatar %>" alt="..." class="avatar img-raised">
+                            <span><a href="/users/<%= post.author.id %>"><%= post.author.username %></a></span>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <%}); %>
+        </div>
+    </div>
+
+</div>
+
+
+<%- include("partials/footer") %>
+<script>
+    $(window).scroll(function () {
+        $("nav").toggleClass("bg-scrolled", $(this).scrollTop() > 426);
+    })
+</script>

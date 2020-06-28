@@ -1,0 +1,34 @@
+<%- include("../partials/header") %>
+<div class="page-header-image" style="background-image:url(/images/sh-background.jpg)">
+</div>
+<div class="section comment-blog-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <hr>
+                <h3 class="title text-center"><%= commentpost.title %> yazısını yorumla</h3>
+                <div class="media media-post">
+                    <a class="pull-left author" href="#pablo">
+                        <div class="avatar">
+                            <img class="media-object img-raised" alt="64x64"
+                                src=" <%= currentUser.avatar %>">
+                        </div>
+                    </a>
+                    <div class="media-body">
+                        <form action="/posts/<%= commentpost.id %>/comments" method="POST">
+                            <textarea class="form-control" placeholder="Yorumunu buraya yaz..." rows="4"
+                                name="comment[text]" required></textarea>
+                            <div class="media-footer">
+                                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<%- include("../partials/footer") %>
