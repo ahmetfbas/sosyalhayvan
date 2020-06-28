@@ -19,8 +19,8 @@ var express = require("express"),
 
 // APP CONFIG
 //seedDB();
-mongoose.connect("mongodb://localhost/sosyal_hayvan",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-//mongoose.connect("mongodb+srv://ahmetfbas:bvkbs2AB.@sosyalhayvan-x9d4g.mongodb.net/sosyal_hayvan?retryWrites=true&w=majority",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false,useCreateIndex: true})
+//mongoose.connect("mongodb://localhost/sosyal_hayvan",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+mongoose.connect("mongodb+srv://ahmetfbas:bvkbs2AB.@sosyalhayvan-x9d4g.mongodb.net/sosyal_hayvan?retryWrites=true&w=majority",{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false,useCreateIndex: true})
 
 
 
